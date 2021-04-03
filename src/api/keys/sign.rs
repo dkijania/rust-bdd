@@ -3,10 +3,15 @@ use hmac::{Hmac, Mac, NewMac};
 use indexmap::IndexMap;
 use sha2::{Digest, Sha256, Sha512};
 
+/// Responsible for signing requests for private endpoints
 pub struct RequestSigner {
+    /// nonce which should be bump up each request
     nonce: u64,
+    /// user secret key
     secret_key: String,
+    /// local path to endpoint like '/0/private/OpenTrades'
     path: String,
+    /// body params
     params: IndexMap<String, String>,
 }
 
@@ -40,6 +45,24 @@ impl RequestSigner {
         self
     }
 
+    /// Produces signature for request
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// let nonce = 637529717071992864u64;
+    /// let mut params = IndexMap::new();
+    /// params.insert("nonce".to_owned(), nonce.to_string());
+    /// params.insert("trades".to_owned(), "True".to_owned());
+    ///
+    /// let hash = RequestSigner::new()
+    ///     .nonce(nonce)
+    ///     .secret_key("secet_key")
+    ///     .path("/0/private/OpenOrders")
+    ///     .params(params)
+    ///     .sign();
+    ///
+    /// ```
     pub fn sign(self) -> String {
         let secret_bytes = base64::decode(self.secret_key).unwrap();
         let path_bytes = self.path.as_bytes();

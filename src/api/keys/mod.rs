@@ -2,6 +2,9 @@ mod sign;
 
 pub use sign::RequestSigner;
 
+/// Structs holds api->secret keys pair
+/// which are needed when accessing private endpoints
+/// TODO: think of more secure way of storing keys like secstr
 #[derive(Clone, Debug)]
 pub struct ApiKeys {
     api_key: String,

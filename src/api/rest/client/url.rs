@@ -1,5 +1,6 @@
 const SEPARATOR: &str = "/";
 
+/// struct which can be use to mainpulate request url
 #[derive(Clone, Debug)]
 pub struct Url {
     segments: Vec<String>,
@@ -12,6 +13,10 @@ impl Url {
         }
     }
 
+    /// adds segment to paths
+    /// # Arguments
+    ///
+    /// * 'segment' - path segment to add
     pub fn join<S: Into<String>>(mut self, segment: S) -> Self {
         self.segments.push(segment.into());
         self
@@ -21,6 +26,7 @@ impl Url {
         self.segments.join(SEPARATOR)
     }
 
+    /// return string to url without address
     pub fn local_as_string(&self) -> String {
         format!(
             "{}{}",

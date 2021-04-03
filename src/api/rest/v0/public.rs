@@ -5,12 +5,17 @@ use crate::api::{
 };
 use std::collections::HashMap;
 
+/// public requests api
 pub struct Public {
     url: Url,
     rest_client: RestClient,
 }
 
 impl Public {
+    /// returns ticker from api
+    /// # Arguments
+    ///
+    /// * `ticker` - A string that holds the pair symbol (like XBTUSD)
     pub fn ticker<S: Into<String>>(self, ticker: S) -> Result<HashMap<String, Ticker>, Error> {
         as_result(
             &self
@@ -21,7 +26,7 @@ impl Public {
                 .text()?,
         )
     }
-
+    /// returns api server time
     pub fn server_time(self) -> Result<ServerTime, Error> {
         as_result(&self.rest_client.post(self.url.join("Time"))?.text()?)
     }
