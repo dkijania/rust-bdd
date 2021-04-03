@@ -41,11 +41,6 @@ impl RequestSigner {
     }
 
     pub fn sign(self) -> String {
-        println!(
-            "nonce: {} \n secret: {} \n path: {} \n params: {:#?}",
-            self.nonce, self.secret_key, self.path, self.params
-        );
-
         let secret_bytes = base64::decode(self.secret_key).unwrap();
         let path_bytes = self.path.as_bytes();
         let params = convert_to_multipart(&self.params);
@@ -58,9 +53,7 @@ impl RequestSigner {
         mac.update(&path_bytes);
         mac.update(&hash256_bytes);
         let signature = mac.finalize().into_bytes();
-        let output = base64::encode(signature);
-        println!("{}", output);
-        output
+        base64::encode(signature)
     }
 }
 
