@@ -1,9 +1,10 @@
-use crate::api::{keys::ApiKeys, Api};
+use crate::api::{keys::ApiKeys, utils::env::env_has_value, Api};
 use std::env::var;
 
 const API_KEY_ENV_NAME: &str = "API_KEY";
 const SECRET_KEY_ENV_NAME: &str = "SECRET_KEY";
 const ENDPOINT: &str = "API_ENDPOINT";
+const DEBUG: &str = "DEBUG";
 
 #[derive(Clone, Debug)]
 pub struct ApiContext {
@@ -35,6 +36,10 @@ impl ApiContext {
             address: address.into(),
             api_keys: Some(api_keys),
         }
+    }
+
+    pub fn is_debug_enabled(&self) -> bool {
+        env_has_value(DEBUG, "true")
     }
 
     pub fn keys(&self) -> &Option<ApiKeys> {
