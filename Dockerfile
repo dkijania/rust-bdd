@@ -28,12 +28,18 @@ RUN cd ${ENV_PREFIX}/src && \
 
 ARG API_KEY_ARG=""
 ARG SECRET_KEY_ARG=""
+
+# Endpoint in format 'https://api.com'
 ARG API_ENDPOINT_ARG=""
+
+# Controls debug printout during tests
+# Enabled if 'true' 
 ARG DEBUG_ARG=""
 
 ENV API_KEY=$API_KEY_ARG
 ENV SECRET_KEY=$SECRET_KEY_ARG
 ENV API_ENDPOINT=$API_ENDPOINT_ARG
+
 ENV DEBUG=$DEBUG_ARG
 
 # run tests
