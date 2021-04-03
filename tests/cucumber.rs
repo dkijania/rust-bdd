@@ -5,14 +5,14 @@ use rust_bdd::{api::utils::ApiContext, cucumber::debug::ProblemDetectingEventHan
 #[tokio::test]
 async fn test() {
     let api_context = ApiContext::from_env_variables();
+    let debug = api_context.is_debug_enabled();
 
     let event_handler = ProblemDetectingEventHandler::default();
     Cucumber::<universe::TimeWorld>::with_handler(event_handler.clone())
         .features(&["./features/public/time"])
         .context(Context::new().add(api_context.clone()))
         .steps(universe::time_steps())
-        .enable_capture(true)
-        .debug(true)
+        .debug(debug)
         .run()
         .await;
 
@@ -20,8 +20,7 @@ async fn test() {
         .features(&["./features/public/ticker"])
         .context(Context::new().add(api_context.clone()))
         .steps(universe::ticker_steps())
-        .enable_capture(true)
-        .debug(true)
+        .debug(debug)
         .run()
         .await;
 
@@ -29,8 +28,7 @@ async fn test() {
         .features(&["./features/private/open_orders"])
         .context(Context::new().add(api_context))
         .steps(universe::open_orders_steps())
-        .enable_capture(true)
-        .debug(true)
+        .debug(debug)
         .run_and_exit()
         .await
 }
