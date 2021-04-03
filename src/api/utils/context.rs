@@ -1,9 +1,9 @@
 use crate::api::{keys::ApiKeys, Api};
 use std::env::var;
 
-const API_KEY_ENV_NAME: &str = "API-KEY";
-const SECRET_KEY_ENV_NAME: &str = "SECRET-KEY";
-const ENDPOINT: &str = "API-ENDPOINT";
+const API_KEY_ENV_NAME: &str = "API_KEY";
+const SECRET_KEY_ENV_NAME: &str = "SECRET_KEY";
+const ENDPOINT: &str = "API_ENDPOINT";
 
 #[derive(Clone, Debug)]
 pub struct ApiContext {
