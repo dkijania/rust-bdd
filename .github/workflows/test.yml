@@ -1,0 +1,49 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - '**'
+  pull_request:
+    branches:
+      - '**'
+
+jobs:
+
+  cache_info:
+    name: Bootstrap cache
+    runs-on: ubuntu-latest
+    outputs:
+      crates-io-index-head: ${{ steps.ls-crates-io-index.outputs.head }}
+      cargo-lock-hash: ${{ steps.hash-cargo-lock.outputs.hash }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+ 
+  lints:
+    name: Lints
+    needs: cache_info
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          profile: minimal
+          override: true
+          default: true
+          components: rustfmt, clippy
+
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: rustfmt
+        uses: actions-rs/cargo@v1
+        with:
+          command: fmt
+          args: -- --check
+
+      - name: clippy
+        uses: actions-rs/cargo@v1
+        with:
+          command: clippy
+          args: -- -D warnings
