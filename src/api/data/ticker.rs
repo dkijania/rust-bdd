@@ -1,5 +1,6 @@
 use serde::{Deserialize, Serialize};
 
+/// Ticker template response
 #[derive(Serialize, Deserialize, Debug)]
 pub struct Ticker {
     pub altname: String,
