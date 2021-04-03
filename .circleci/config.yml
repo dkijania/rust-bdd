@@ -12,8 +12,11 @@ jobs:
           name: Check formatting
           command: cargo fmt -- --check
       - run:
+          name: Check Clippy
+          command: cargo clippy -- -D warnings
+      - run:
           name: Stable Build
-          command: cargo build --release
+          command: cargo build
       - run:
           name: Test
           command: cargo test
