@@ -9,25 +9,35 @@ Example of bdd in rust
 
 # setup
 
+## build
+
+`cargo build`
+
+## test
+
 Before running tests below env variables needs to be defined:
 
 1. User api key
 ```
-API_KEY="68m51U..."
+set API_KEY="68m51U..."
 ```
 2. Secret key
 ```
-SECRET_KEY="b67VivGPzyumN4Rj52h..."
+set SECRET_KEY="b67VivGPzyumN4Rj52h..."
 ```
 3. Api endpoint
 ```
-API_ENDPOINT=https://api.sample.com
+set API_ENDPOINT=https://api.sample.com
 ```
 
 Optionally debug environment variable can be defined to allow steps and api debug printout
 ```
-DEBUG=true
+set DEBUG=true
 ```
+
+### to see test output
+
+`cargo test -- --nocapture`
 
 # docker
 
