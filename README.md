@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/dkijania/rust-bdd.svg?style=shield)]
+![CircleCI](https://circleci.com/gh/dkijania/rust-bdd.svg?style=shield)
 
 # rust-bdd
 Example of bdd in rust
@@ -20,7 +20,7 @@ SECRET_KEY="b67VivGPzyumN4Rj52h..."
 API_ENDPOINT=https://api.sample.com
 ```
 
-Optionally debug environment variable can be defined to allow steps and api debugging
+Optionally debug environment variable can be defined to allow steps and api debug printout
 ```
 DEBUG=true
 ```
