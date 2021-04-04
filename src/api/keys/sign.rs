@@ -50,6 +50,9 @@ impl RequestSigner {
     /// # Examples
     ///
     /// ```
+    /// use indexmap::IndexMap;
+    /// use rust_bdd::api::keys::RequestSigner;
+    ///
     /// let nonce = 637529717071992864u64;
     /// let mut params = IndexMap::new();
     /// params.insert("nonce".to_owned(), nonce.to_string());
@@ -57,7 +60,7 @@ impl RequestSigner {
     ///
     /// let hash = RequestSigner::new()
     ///     .nonce(nonce)
-    ///     .secret_key("secet_key")
+    ///     .secret_key("b67VivGPzyumN4Rj52h/ZONvze9JnI5LdVn62e/RuVc1cNJcHmsBkzT2JLVfFvlw6LYC+ySTIr0GUx0PIbsx+w==")
     ///     .path("/0/private/OpenOrders")
     ///     .params(params)
     ///     .sign();
