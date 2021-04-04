@@ -7,8 +7,11 @@ use crate::api::{
 };
 use reqwest::blocking::Response;
 
+/// Specialized rest client for sending private requests
 pub struct SecureRestClient {
+    /// general client
     client: RestClient,
+    /// full url for endpoint
     url: Option<Url>,
 }
 
@@ -20,21 +23,30 @@ impl SecureRestClient {
         }
     }
 
+    /// add defaults headers like content type
     pub fn add_default_headers(mut self) -> Result<Self, Error> {
         self.client = self.client.add_default_headers()?;
         Ok(self)
     }
 
+    /// sets url for request
     pub fn url(mut self, url: Url) -> Self {
         self.url = Some(url);
         self
     }
 
+    /// adds body param
     pub fn defined_body_param(mut self, param: DefinedBodyParam) -> Self {
         self.client = self.client.defined_body_param(param);
         self
     }
 
+    /// signs requests with provided api keys
+    /// uses nonce equal to current time ticks
+    /// # Arguments
+    ///
+    /// * `api_keys` - user keys
+    ///
     pub fn sign(mut self, api_keys: ApiKeys) -> Result<Self, Error> {
         if self.url.is_none() {
             return Err(Error::UrlMustBeDefinedPriorToSign);

@@ -12,9 +12,13 @@ use crate::api::{
     Error,
 };
 
+/// Rest client for sending requests
 pub struct RestClient {
+    /// headers to be used in request
     headers: HeaderMap,
+    /// query parameters
     query: HashMap<String, String>,
+    /// body parameters
     body: IndexMap<String, String>,
 }
 
@@ -68,6 +72,11 @@ impl RestClient {
         self
     }
 
+    /// Sends request and returns general response
+    /// # Arguments
+    ///
+    /// * `url` - full url to endpoint
+    ///
     pub fn post(self, url: Url) -> Result<Response, Error> {
         println!("Headers: {:#?}", self.headers);
 

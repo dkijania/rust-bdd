@@ -1,14 +1,20 @@
+/// requests data
 pub mod data;
+/// api keys
 pub mod keys;
+/// utilities
 pub mod utils;
 
 mod error;
-mod rest;
+/// rest clients
+pub mod rest;
 
 pub use error::Error;
 use rest::{RestApi, Url};
 
+/// single entrypoint for all api operations
 pub struct Api {
+    /// url endpoint
     endpoint: Url,
 }
 

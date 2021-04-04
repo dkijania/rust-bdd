@@ -1,6 +1,8 @@
 use cucumber_rust::{event::*, output::BasicOutput, EventHandler};
 use std::sync::{Arc, Mutex};
 
+/// structs which helps debug cucumber problems
+/// by allowing all println!() macros to be redirected to stdout
 #[derive(Clone, Default)]
 pub struct ProblemDetectingEventHandler {
     pub state: Arc<Mutex<ProblemDetectingEventHandlerState>>,

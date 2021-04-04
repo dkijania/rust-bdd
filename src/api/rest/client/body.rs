@@ -1,3 +1,4 @@
+/// Helper struct which holds strongly typed body params
 #[derive(Eq, Hash, PartialEq, Copy, Clone)]
 pub enum DefinedBodyParam {
     Nonce(u64),
@@ -5,13 +6,13 @@ pub enum DefinedBodyParam {
 }
 
 impl DefinedBodyParam {
+    /// converts body param into key value tuple
     pub fn into_pair(self) -> (String, String) {
         match self {
             DefinedBodyParam::Nonce(timestamp) => ("nonce".to_string(), timestamp.to_string()),
-            DefinedBodyParam::Trades(trades) => (
-                "trades".to_string(),
-                uppercase_first_letter(&trades.to_string()),
-            ),
+            DefinedBodyParam::Trades(trades) => {
+                ("trades".to_string(), capitalize(&trades.to_string()))
+            }
         }
     }
 }
@@ -22,7 +23,7 @@ impl From<u64> for DefinedBodyParam {
     }
 }
 
-fn uppercase_first_letter(s: &str) -> String {
+fn capitalize(s: &str) -> String {
     let mut c = s.chars();
     match c.next() {
         None => String::new(),

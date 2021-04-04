@@ -6,6 +6,7 @@ const SECRET_KEY_ENV_NAME: &str = "SECRET_KEY";
 const ENDPOINT: &str = "API_ENDPOINT";
 const DEBUG: &str = "DEBUG";
 
+/// holds all necessary data for interaction with rest api
 #[derive(Clone, Debug)]
 pub struct ApiContext {
     api_keys: Option<ApiKeys>,
@@ -13,6 +14,7 @@ pub struct ApiContext {
 }
 
 impl ApiContext {
+    /// bootstrap api context from env variables
     pub fn from_env_variables() -> Self {
         let api_key = read_env_variable(API_KEY_ENV_NAME);
         let secret_key = read_env_variable(SECRET_KEY_ENV_NAME);
@@ -38,6 +40,8 @@ impl ApiContext {
         }
     }
 
+    /// debug mode is used to printout all requests requests and responses
+    /// value is based on env variable
     pub fn is_debug_enabled(&self) -> bool {
         env_has_value(DEBUG, "true")
     }

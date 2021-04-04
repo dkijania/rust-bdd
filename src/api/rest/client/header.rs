@@ -1,6 +1,10 @@
+/// Default content type used in each requests
+/// with body
 pub const DEFAULT_CONTENT_TYPE: &str = "application/x-www-form-urlencoded";
+
 use std::fmt;
 
+/// Helper structs which defined headers needed for signing requests
 #[derive(Eq, Hash, PartialEq, Copy, Clone)]
 pub enum DefinedHeader {
     ApiKey,
