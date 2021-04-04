@@ -1,7 +1,11 @@
-![CircleCI](https://circleci.com/gh/dkijania/rust-bdd.svg?style=shield)
-
 # rust-bdd
 Example of bdd in rust
+
+## Master current build status
+
+| CI | Status | Description |
+|---:|:------:|:------------|
+| CircleCI | ![CircleCI](https://circleci.com/gh/dkijania/rust-bdd.svg?style=shield) | Master |
 
 # setup
 
