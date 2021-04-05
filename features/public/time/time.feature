@@ -1,7 +1,7 @@
-Feature: Time feature
+Feature: Time endpoint
 
-  Scenario: User query for current time using public api
-    Given User without credentials
-    When query for time
+  Scenario: User wants to know current server time
+    Given User without api keys
+    When query for server time
     Then date close to current time is produced
     And human readable date has "%a,  %e %b %y %T %z" format

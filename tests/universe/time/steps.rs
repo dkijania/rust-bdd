@@ -5,11 +5,11 @@ use rust_bdd::api::utils::{self, ApiContext};
 pub fn steps() -> Steps<TimeWorld> {
     let mut steps: Steps<TimeWorld> = Steps::new();
 
-    steps.given("User without credentials", |_world, _ctx| {
+    steps.given("User without api keys", |_world, _ctx| {
         TimeWorld::BeforeRequest
     });
 
-    steps.when("query for time", |world, ctx| match world {
+    steps.when("query for server time", |world, ctx| match world {
         TimeWorld::BeforeRequest => {
             let api_context = ctx.get::<ApiContext>().expect("cannot find Api Context");
             let api = api_context.api();

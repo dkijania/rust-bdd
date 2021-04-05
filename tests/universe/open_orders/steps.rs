@@ -18,9 +18,9 @@ pub fn steps() -> Steps<OpenOrdersWorld> {
         _ => panic!("Invalid world state"),
     });
 
-    steps.given("Does not have any open trades", |world, _ctx| world);
+    steps.given("without any open trades", |world, _ctx| world);
 
-    steps.when("User query for open trades", |world, ctx| match world {
+    steps.when("query for open trades", |world, ctx| match world {
         OpenOrdersWorld::BeforeRequest(keys) => {
             let api = ctx.get::<ApiContext>().expect("cannot find Api Context");
 
@@ -29,7 +29,7 @@ pub fn steps() -> Steps<OpenOrdersWorld> {
         _ => panic!("Invalid world state"),
     });
 
-    steps.then("open trades are empty", |world, _ctx| {
+    steps.then("list is empty", |world, _ctx| {
         match world {
             OpenOrdersWorld::AfterRequest(ref response) => {
                 let open_orders = response.as_ref().expect("unexpected failure");

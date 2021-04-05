@@ -1,7 +1,7 @@
-Feature: Time feature
+Feature: Ticker Endpoint
 
   Scenario: User query for XBTUSD pair using public api
-    Given User without credentials
+    Given User without api keys
     When query for ticker pair "XBTUSD"
     Then field "altname" in response contains "XBTUSD"
     And field "wsname" in response contains "XBT/USD"
@@ -17,6 +17,6 @@ Feature: Time feature
     And field "ordermin" in response contains "0.0002"
 
   Scenario: User query for non existing pair using public api
-    Given User without credentials
+    Given User without api keys
     When query for ticker pair "XBTUSDN"
     Then error is produced with messsage ~ "Unknown asset pair"
