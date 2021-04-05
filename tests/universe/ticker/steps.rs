@@ -5,7 +5,7 @@ use rust_bdd::api::utils::{get_value, ApiContext};
 pub fn steps() -> Steps<TickerWorld> {
     let mut steps: Steps<TickerWorld> = Steps::new();
 
-    steps.given("User without credentials", |_world, _ctx| {
+    steps.given("User without api keys", |_world, _ctx| {
         TickerWorld::BeforeRequest
     });
 

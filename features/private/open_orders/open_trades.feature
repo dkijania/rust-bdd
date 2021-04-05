@@ -1,7 +1,7 @@
-Feature: Open Trades feature
+Feature: Open Trades endpoint
 
-  Scenario: User query his open trades
+  Scenario: User want to know all his open trades
     Given User with correct api keys
-    And Does not have any open trades
-    When User query for open trades
-    Then open trades are empty
+    And without any open trades
+    When query for open trades
+    Then list is empty
