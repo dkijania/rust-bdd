@@ -23,7 +23,7 @@ impl Private {
         }
     }
 
-    /// sends open orders requests, signs it with api keys (if defined)
+    /// sends open orders request, signs it with api keys (if defined)
     /// returns response as result
     pub fn open_orders(self) -> Result<OpenTrades, Error> {
         let mut client = self

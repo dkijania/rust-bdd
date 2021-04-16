@@ -8,10 +8,10 @@ use serde::{Deserialize, Serialize};
 pub use server_time::ServerTime;
 pub use ticker::Ticker;
 
-/// Template Response which is produced after each call
-/// usually api won't send error code for invalid request
-/// but each response got 'error' field which contains error message
-/// and result field is empty then
+/// Template Response produced after each api call.
+/// Usually api won't send error code for invalid requests.
+/// Each response contains 'error' field which contains error message
+/// in case of any error while result field is empty,
 ///
 /// This sturct can convert api response to standard rust Response
 #[derive(Deserialize, Serialize, Debug)]
@@ -35,7 +35,6 @@ where
 }
 
 /// Converts response texts into standard rust std::restult::Result object
-/// Returns a person with the name given them
 ///
 /// # Arguments
 ///
