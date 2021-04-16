@@ -1,7 +1,7 @@
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 
-/// Response template from OpenTrades response
+/// Response template for OpenTrades response
 #[derive(Serialize, Deserialize, Debug)]
 pub struct OpenTrades {
     pub open: HashMap<String, Empty>,

@@ -5,13 +5,15 @@ use sha2::{Digest, Sha256, Sha512};
 
 /// Responsible for signing requests for private endpoints
 pub struct RequestSigner {
-    /// nonce which should be bump up each request
+    /// nonce which should be bumped up for each private request
     nonce: u64,
     /// user secret key
     secret_key: String,
-    /// local path to endpoint like '/0/private/OpenTrades'
+    /// local path to endpoint. for example '/0/private/OpenTrades'
     path: String,
     /// body params
+    /// NOTE: IndexMap is used in order to preserve order of insertion.
+    /// This is required for propoer signing operation
     params: IndexMap<String, String>,
 }
 
