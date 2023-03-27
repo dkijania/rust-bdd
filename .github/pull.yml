@@ -1,0 +1,14 @@
+version: "1"
+rules:                      # Array of rules
+  - base: rampup
+    mergeMethod: hardreset  # Optional, one of [none, merge, squash, rebase, hardreset], Default: none.
+    mergeUnstable: false    # Optional, merge pull request even when the mergeable_state is not clean. Default: false
+    upstream: develop        # Required. Can be a branch in the same forked repo.
+    assignees:              # Optional
+      - dkijania
+    reviewers:              # Optional
+      - dkijania
+    conflictReviewers:      # Optional, on merge conflict assign a reviewer
+      - dkijania
+label: ":arrow_heading_down: pull"  # Optional
+conflictLabel: "merge-conflict"    
