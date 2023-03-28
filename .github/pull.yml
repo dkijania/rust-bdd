@@ -1,6 +1,6 @@
 version: "1"
 rules:                      # Array of rules
-  - base: origin:rampup
+  - base: dkijania:rampup
     mergeMethod: hardreset  # Optional, one of [none, merge, squash, rebase, hardreset], Default: none.
     mergeUnstable: false    # Optional, merge pull request even when the mergeable_state is not clean. Default: false
     upstream: origin:develop        # Required. Can be a branch in the same forked repo.
