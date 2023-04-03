@@ -11,6 +11,7 @@ berkeley| CI | Status | Description |
 
 ## build
 
+rampup
 `cargo build`
 
 ## test
