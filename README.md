@@ -1,5 +1,5 @@
 # rust-bdd
-Example of bdd in rust-rampup
+Example of bdd in rust-develop and rampup
 
 ## Master current build status
 
