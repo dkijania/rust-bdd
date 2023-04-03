@@ -11,6 +11,7 @@ Example of bdd in rust-develop and rampup
 
 ## build
 
+rampup
 `cargo build`
 
 ## test
