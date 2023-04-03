@@ -3,7 +3,7 @@ Example of bdd in rust-develop and rampup
 
 ## Master current build status
 
-| CI | Status | Description |
+berkeley| CI | Status | Description |
 |---:|:------:|:------------|
 | CircleCI | ![CircleCI](https://circleci.com/gh/dkijania/rust-bdd.svg?style=shield) | Master |
 
